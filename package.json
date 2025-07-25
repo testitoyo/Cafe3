@@ -1,5 +1,5 @@
 {
-  "name": "Coffee3",
+  "name": "Cafe3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -26,5 +26,8 @@
     "solidity-coverage": "^0.8.0",
     "typechain": "^8.3.0"
   },
-  "packageManager": "pnpm@8.15.4+sha1.c85a4305534f76d461407b59277b954bac97b5c4"
+  "packageManager": "pnpm@8.15.4+sha1.c85a4305534f76d461407b59277b954bac97b5c4",
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
 }
