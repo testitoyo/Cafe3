@@ -41,12 +41,7 @@ contract BuyMeACoffeeTest is Test {
         vm.warp(fixedTimestamp);
 
         vm.expectEmit(true, false, false, true);
-        emit BuyMeACoffee.NewMemo(
-            user1,
-            block.timestamp,
-            "Bob",
-            "Thanks for the content!"
-        );
+        emit BuyMeACoffee.NewMemo(user1, block.timestamp, "Bob", "Thanks for the content!");
 
         vm.prank(user1);
         coffee.buyCoffee{value: 0.01 ether}("Bob", "Thanks for the content!");
