@@ -3,12 +3,7 @@ pragma solidity ^0.8.30;
 
 contract BuyMeACoffee {
     /// @notice Emitted when a coffee is bought
-    event NewMemo(
-        address indexed from,
-        uint256 timestamp,
-        string name,
-        string message
-    );
+    event NewMemo(address indexed from, uint256 timestamp, string name, string message);
 
     struct Memo {
         address from;
@@ -31,10 +26,7 @@ contract BuyMeACoffee {
      * @param _name Name of the sender
      * @param _message A personal message from the sender
      */
-    function buyCoffee(
-        string memory _name,
-        string memory _message
-    ) public payable {
+    function buyCoffee(string memory _name, string memory _message) public payable {
         require(msg.value > 0, "Can't buy coffee with 0 KAIA");
 
         memos.push(Memo(msg.sender, block.timestamp, _name, _message));
@@ -48,7 +40,7 @@ contract BuyMeACoffee {
         uint256 balance = address(this).balance;
         require(balance > 0, "No tips to withdraw");
 
-        (bool success, ) = owner.call{value: balance}("");
+        (bool success,) = owner.call{value: balance}("");
         require(success, "Transfer failed");
     }
 
