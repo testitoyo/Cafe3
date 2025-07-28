@@ -12,3 +12,5 @@ broadcast/
 
 # Debug output
 *.dbg.json
+
+.env
