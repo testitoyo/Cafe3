@@ -14,9 +14,15 @@
             Connect your wallet to buy me a coffee and leave a message!
         </p>
         <button
+            @click="connectWallet"
+            :disabled="isConnecting"
             class="bg-[#A67C52] text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md hover:bg-[#5C4033] transition"
         >
-            Connect Wallet
+            {{ isConnecting ? "Connecting..." : "Connect Wallet" }}
         </button>
     </div>
 </template>
+
+<script setup lang="ts">
+const { connectWallet, isConnecting } = useWallet();
+</script>

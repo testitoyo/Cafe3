@@ -1,4 +1,3 @@
-import { ref, computed } from "vue";
 import type { CoffeeItem } from "~/types/contract";
 
 export function useCoffeeMenu() {
