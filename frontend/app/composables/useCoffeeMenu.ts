@@ -1,4 +1,4 @@
-// Singleton state
+// Shared singleton state
 const selectedAmount = ref("0.5");
 const coffeeQuantities = ref({
     "0.5": 1,
