@@ -1,66 +1,52 @@
-## Foundry
+# Buy Me a Coffee – Single-User Web3-Based Version
+A beautiful modern Web3 app built with Nuxt, Vue 3 and Solidity. It uses Foundry for smart contract development and lets users buy me a coffee and leave blockchain-backed messages.
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+<img width="2530" height="1376" alt="Cafe3" src="https://github.com/user-attachments/assets/5403bec0-b76f-48e8-9395-d1f50ddf47fa" />
 
-Foundry consists of:
+## Getting Started
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+1. **Install Dependencies**
 
-## Documentation
+   ```bash
+   pnpm install
+   ```
 
-https://book.getfoundry.sh/
+2. **Start Development Server**
 
-## Usage
+   ```bash
+   pnpm dev
+   ```
 
-### Build
+3. **Connect Wallet**
 
-```shell
-$ forge build
-```
+   - Install MetaMask browser extension
+   - Connect your wallet to the application
+   - Switch to Kaia Kairos Testnet (automatically handled)
 
-### Test
+4. **Buy Coffee**
+   - Select coffee items and quantities
+   - Enter your name and message
+   - Confirm the transaction
+   - View your message in the guest book
 
-```shell
-$ forge test
-```
+## Technical Stack
+ TODO
 
-### Format
+## Project Structure
 
-```shell
-$ forge fmt
-```
+  TODO 
 
-### Gas Snapshots
+## Smart Contract Integration
 
-```shell
-$ forge snapshot
-```
+The frontend integrates with a deployed BuyMeACoffee smart contract that supports:
 
-### Anvil
+- `buyCoffee(name, message)` - Send coffee with a message
+- `getMemos()` - Retrieve all coffee orders
+- `withdrawTips()` - Owner can withdraw accumulated tips
+- `getOwner()` - Get the contract owner address
 
-```shell
-$ anvil
-```
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## TODOs
+- [ ] Watch for wallet change
+- [ ] Deploy the smart contract to mainnet
+- [ ] Deploy frontend to gh pages
