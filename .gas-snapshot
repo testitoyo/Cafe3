@@ -1,0 +1,7 @@
+BuyMeACoffeeTest:testBuyCoffeeEmitsEvent() (gas: 140012)
+BuyMeACoffeeTest:testBuyCoffeeStoresMemo() (gas: 146473)
+BuyMeACoffeeTest:testCannotBuyCoffeeWithZeroValue() (gas: 13316)
+BuyMeACoffeeTest:testCannotWithdrawWithZeroBalance() (gas: 10921)
+BuyMeACoffeeTest:testInitialOwner() (gas: 13286)
+BuyMeACoffeeTest:testMemosCountIncreases() (gas: 242783)
+BuyMeACoffeeTest:testWithdrawTipsOnlyOwner() (gas: 154756)
