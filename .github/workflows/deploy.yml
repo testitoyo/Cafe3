@@ -11,13 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - run: cd frontend
+
       - run: corepack enable
       
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
       # Pick your own package manager and build script
-      - run: cd frontend
       - run: pnpm install
       - run: pnpm nuxt generate
       - name: Upload artifact
