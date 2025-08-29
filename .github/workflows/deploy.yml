@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate static site
-        run: pnpm run generate
+        run: NUXT_APP_BASE_URL=/Cafe3/ pnpm run build --preset github_pages
 
       - name: Ensure .nojekyll exists
         run: |
