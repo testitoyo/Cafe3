@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate static site
-        run: pnpm run build:gh-pages
+        run: pnpm run generate
 
       - name: Ensure .nojekyll exists
         run: |
