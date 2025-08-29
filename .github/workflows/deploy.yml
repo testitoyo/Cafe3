@@ -1,59 +1,66 @@
-name: Deploy to GitHub Pages
+name: Deploy frontend to GitHub Pages
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+# Required for GitHub Pages deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: 20
+          cache: "pnpm"
+          cache-dependency-path: frontend/pnpm-lock.yaml
 
       - name: Enable Corepack (pnpm)
         run: corepack enable
 
-      - name: Install pnpm
-        run: corepack prepare pnpm@latest --activate
-
-      - name: Restore pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/pnpm
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('frontend/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: frontend
 
-      - name: Build Nuxt site
-        run: pnpm nuxt generate
-        working-directory: frontend
+      - name: Generate static site
+        run: pnpm run build:gh-pages
 
-      - name: Upload build artifact
+      - name: Ensure .nojekyll exists
+        run: |
+          mkdir -p .output/public
+          touch .output/public/.nojekyll
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: frontend/.output/public
 
   deploy:
-    needs: build
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
